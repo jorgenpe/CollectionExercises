@@ -1,9 +1,7 @@
 package org.example;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class CollectionExercises
 {
@@ -17,6 +15,12 @@ public class CollectionExercises
         Exercises5();
         Exercises6();
         Exercises7();
+        Exercises8();
+        Exercises9();
+        Exercises10();
+        Exercises11();
+        Exercises12();
+
 
     }
 
@@ -142,7 +146,7 @@ public class CollectionExercises
     public static void Exercises6(){
 
         HashSet<String> weekHash = new HashSet<>();
-        List<String> weekList = new ArrayList<>();
+
 
         weekHash.add("Monday");
         weekHash.add("Tuesday");
@@ -152,12 +156,11 @@ public class CollectionExercises
         weekHash.add("Saturday");
         weekHash.add("Sunday");
 
-
+        List<String> weekList = new ArrayList<>(weekHash);
         System.out.println("Exercises6\n");
 
         System.out.println(weekHash.toString());
         System.out.println();
-        weekList.addAll(weekHash);
 
 
         for (String s : weekList) {
@@ -171,23 +174,36 @@ public class CollectionExercises
     public static void Exercises7(){
 
         HashSet<String> nameHash = new HashSet<>();
-        List<String> nameList = new ArrayList<>();
 
-        nameHash.add("Monday");
-        nameHash.add("Tuesday");
-        nameHash.add("Wednesday");
-        nameHash.add("Thursday");
-        nameHash.add("Friday");
-        nameHash.add("Saturday");
-        nameHash.add("Sunday");
 
+        nameHash.add("Lars");
+        nameHash.add("Lisa");
+        nameHash.add("Anna");
+        nameHash.add("Börje");
+        nameHash.add("Ann");
+        nameHash.add("Nisse");
+        nameHash.add("Johan");
+        List<String> nameList = new ArrayList<>(nameHash);
 
         System.out.println("Exercises7\n");
 
         System.out.println(nameHash.toString());
         System.out.println();
-        nameList.addAll(nameHash);
 
+
+        for(int i = 0; i < nameList.size(); i++){
+
+            for( int j = 0; j < nameList.size(); j++){
+
+                if(nameList.get(i).compareTo(nameList.get(j)) < 0){
+
+                    String temp = nameList.get(i);
+
+                    nameList.set(i,nameList.get(j));
+                     nameList.set(j,temp);
+                }
+            }
+        }
 
         for (String s : nameList) {
 
@@ -197,4 +213,101 @@ public class CollectionExercises
     }
 
 
+    public static void Exercises8(){
+
+        HashSet<String> nameHash = new HashSet<>();
+
+
+        nameHash.add("Lars");
+        nameHash.add("Lisa");
+        nameHash.add("Anna");
+        nameHash.add("Börje");
+        nameHash.add("Ann");
+        nameHash.add("Nisse");
+        nameHash.add("Johan");
+
+        TreeSet<String> nameTree = new TreeSet<String>(nameHash);
+
+
+        System.out.println("Exercises8\n");
+
+        System.out.println(nameTree.toString());
+        System.out.println();
+
+    }
+
+
+    public static void Exercises9(){
+
+        HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+
+        hashMap.put(1,"Lars");
+        hashMap.put(2,"Ann");
+        hashMap.put(3,"Johan");
+        hashMap.put(4,"Jessica");
+        hashMap.put(5,"Ove");
+
+        System.out.println("Exercises9\n");
+
+        System.out.println(hashMap.toString());
+        System.out.println();
+
+    }
+
+    public static void Exercises10(){
+
+        HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+
+        hashMap.put(1,"Lars");
+        hashMap.put(2,"Ann");
+        hashMap.put(3,"Johan");
+        hashMap.put(4,"Jessica");
+        hashMap.put(5,"Ove");
+
+        System.out.println("Exercises10\n");
+
+        for(Map.Entry m : hashMap.entrySet()) {
+            System.out.println("IdKey: " + m.getKey());
+        }
+        System.out.println();
+
+    }
+
+    public static void Exercises11(){
+
+        HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+
+        hashMap.put(1,"Lars");
+        hashMap.put(2,"Ann");
+        hashMap.put(3,"Johan");
+        hashMap.put(4,"Jessica");
+        hashMap.put(5,"Ove");
+
+        System.out.println("Exercises11\n");
+
+        for(Map.Entry m : hashMap.entrySet()) {
+            System.out.println("Name: " + m.getValue());
+        }
+        System.out.println();
+
+    }
+
+    public static void Exercises12(){
+
+        HashMap<Integer, Car> hashMap = new HashMap<Integer, Car>();
+
+        hashMap.put(1,new Car(1, "Ford", "Focus"));
+        hashMap.put(2,new Car(2, "Volvo", "V40"));
+        hashMap.put(3, new Car(3,"Volvo", "V60"));
+        hashMap.put(4, new Car(4, "Saab", "9000"));
+        hashMap.put(5,new Car(5, "Audi", "A6"));
+
+        System.out.println("Exercises12\n");
+
+        for(Integer Id  : hashMap.keySet()) {
+            System.out.println("Brand name: " + hashMap.get(Id).getBrand());
+        }
+        System.out.println();
+
+    }
 }
